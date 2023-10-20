@@ -1,6 +1,18 @@
 # ubuntu_zabbix_agent
 Script to install and config zabbix agent in Ubuntu servers with UFW or LFD firewalls:
 
+1. Create the following file in your desired location:
+
+```
+touch ubuntu_zabbix_agent.sh
+```
+2. Open it with your favorite text editor (vi, vi, nano, etc) and paste the script code:
+
+```
+vi ubuntu_zabbix_agent.sh
+```
+Script:
+
 ```bash
 #!/bin/bash
 
@@ -37,13 +49,16 @@ elif command -v ufw &>/dev/null; then
 else
     echo "Firewall detection failed. No supported firewall found."
 fi
+
+# Restart Zabbix Agent
+sudo service zabbix-agent restart
 ```
 
-1. Save the script, make it executable, and run it with superuser privileges:
+3.  Make it executable, and run it with superuser privileges:
 
 ```
 chmod +x ubuntu_zabbix_agent.sh
 sudo ./ubuntu_zabbix_agent.sh
 ```
 
-2. Enter the IP address of your Zabbix server. It can be more than one server IP, separated by a comma.
+4. Enter the IP address of your Zabbix server. It can be more than one server IP, separated by a comma.
